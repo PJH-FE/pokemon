@@ -1,26 +1,7 @@
-import { Link, useLocation, useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import MOCK_DATA from "../mock";
-import Dashboard from "../components/Dashboard";
-import { useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
-const PokemonDetail = () => {
-  // 목록에서 넘겨받은 나만의 포켓몬
-  const location = useLocation();
-  const [newMyPokemon, setNewMyPokemon] = useState(location.state.myPokemon);
-  const myPokemon = newMyPokemon;
-
-  // 나만의 포켓몬에 추가
-  const addMyPokemon = (pokemon) => {
-    if (myPokemon.length === 6)
-      return toast.error("포켓몬은 최대 6마리까지 등록 가능합니다.");
-
-    !!myPokemon.find((item) => item.id === pokemon.id)
-      ? toast.error("이미 선택된 포켓몬입니다.", { position: "top-center" })
-      : setNewMyPokemon([...myPokemon, pokemon]);
-  };
-
+const PokemonDetail = ({ addPokemon }) => {
   // Query String 가져온 뒤, 같은 아이디의 포켓몬 출력
   const [searchParams, setSearchParams] = useSearchParams();
   const nowPokemonId = Number(searchParams.get("id"));
@@ -40,26 +21,18 @@ const PokemonDetail = () => {
 
   return (
     <div>
-      <ToastContainer />
-      <Dashboard myPokemon={newMyPokemon} />
-      <Link to={prevLink} state={{ myPokemon }}>
-        prev
-      </Link>
+      <Link to={prevLink}>prev</Link>
       <img src={pokemon.img_url} alt="" />
-      <Link to={nextLink} state={{ myPokemon }}>
-        next
-      </Link>
+      <Link to={nextLink}>next</Link>
       <button
         onClick={() => {
-          addMyPokemon(pokemon);
+          addPokemon(pokemon);
         }}
       >
         추가
       </button>
 
-      <Link to="/dex" state={{ myPokemon }}>
-        목록으로 돌아가기
-      </Link>
+      <Link to="/dex">목록으로 돌아가기</Link>
     </div>
   );
 };

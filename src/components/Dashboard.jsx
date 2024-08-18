@@ -5,16 +5,7 @@ const MyPokemon = styled.div`
   display: flex;
 `;
 
-const Dashboard = ({ myPokemon, setMyPokemon }) => {
-  // 삭제 버튼 클릭 시
-  const removePokemon = (pokemon) => {
-    setMyPokemon(
-      [...myPokemon].filter((item) => {
-        return item.id !== pokemon.id;
-      })
-    );
-  };
-
+const Dashboard = ({ myPokemon, removePokemon }) => {
   return (
     <div>
       <h2>나만의 포켓몬</h2>
@@ -26,9 +17,8 @@ const Dashboard = ({ myPokemon, setMyPokemon }) => {
             return (
               <PokemonCard
                 key={pokemon.korean_name}
-                myPokemon={myPokemon}
                 pokemon={pokemon}
-                onClick={removePokemon}
+                clickEvent={removePokemon}
                 isSelected={true}
               />
             );

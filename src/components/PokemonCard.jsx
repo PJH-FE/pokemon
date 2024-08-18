@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const Card = styled.div`
@@ -50,25 +50,21 @@ const typeColor = (type) => {
   }
 };
 
-const PokemonCard = ({ myPokemon, pokemon, onClick, isSelected }) => {
+const PokemonCard = ({ pokemon, clickEvent, isSelected }) => {
   const isLink = `/pokemon-detail?id=${pokemon.id}`;
-  const navigate = useNavigate();
-  const goToDetail = () => {
-    navigate(isLink, {
-      state: { myPokemon },
-    });
-  };
 
   return (
     <Card color={typeColor(pokemon.types[0])}>
-      <img src={pokemon.img_url} alt={pokemon.img_url} onClick={goToDetail} />
+      <Link to={isLink}>
+        <img src={pokemon.img_url} alt={pokemon.img_url} />
+      </Link>
 
       <StName>{pokemon.korean_name}</StName>
 
       {isSelected === false ? (
         <button
           onClick={() => {
-            onClick(pokemon);
+            clickEvent(pokemon);
           }}
         >
           추가
@@ -76,7 +72,7 @@ const PokemonCard = ({ myPokemon, pokemon, onClick, isSelected }) => {
       ) : (
         <button
           onClick={() => {
-            onClick(pokemon);
+            clickEvent(pokemon);
           }}
         >
           삭제

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import MOCK_DATA from "../mock";
 import PokemonCard from "./PokemonCard";
 
 const ListArea = styled.div`
@@ -7,18 +8,16 @@ const ListArea = styled.div`
   flex-wrap: wrap;
 `;
 
-const PokemonList = ({ myPokemon, setMyPokemon, pokemonList, onClick }) => {
+const PokemonList = ({ addPokemon }) => {
   return (
     <>
       <ListArea>
-        {pokemonList.map((pokemon) => {
+        {MOCK_DATA.map((pokemon) => {
           return (
             <PokemonCard
-              myPokemon={myPokemon}
-              setMyPokemon={setMyPokemon}
               key={pokemon.id}
               pokemon={pokemon}
-              onClick={onClick}
+              clickEvent={addPokemon}
               isSelected={false}
             />
           );
