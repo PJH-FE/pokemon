@@ -1,30 +1,39 @@
-import styled from "styled-components";
 import PokemonCard from "./PokemonCard";
-
-const MyPokemon = styled.div`
-  display: flex;
-`;
+import DashboardTitle from "../assets/mypokemon.png";
+import blankImg from "../assets/blankImg.png";
+import "../styles/Dashboard.css";
 
 const Dashboard = ({ myPokemon, removePokemon }) => {
+  const blankDiv = () => {
+    let arr = [];
+    for (let i = 6; i > myPokemon.length; i--) {
+      arr.push(
+        <div className="blankImg">
+          <img src={blankImg} alt="빈 이미지" />
+        </div>
+      );
+    }
+    return arr;
+  };
+
   return (
-    <div>
-      <h2>나만의 포켓몬</h2>
-      {myPokemon.length === 0 ? (
-        <p>선택된 포켓몬이 없습니다</p>
-      ) : (
-        <MyPokemon>
-          {myPokemon.map((pokemon) => {
-            return (
-              <PokemonCard
-                key={pokemon.korean_name}
-                pokemon={pokemon}
-                clickEvent={removePokemon}
-                isSelected={true}
-              />
-            );
-          })}
-        </MyPokemon>
-      )}
+    <div id="dashboard">
+      <h2>
+        <img src={DashboardTitle} alt="나만의 포켓몬" />
+      </h2>
+      <div className="myPokemon">
+        {myPokemon.map((pokemon) => {
+          return (
+            <PokemonCard
+              key={pokemon.korean_name}
+              pokemon={pokemon}
+              clickEvent={removePokemon}
+              isSelected={true}
+            />
+          );
+        })}
+        {blankDiv()}
+      </div>
     </div>
   );
 };

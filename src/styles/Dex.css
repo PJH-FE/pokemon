@@ -1,0 +1,24 @@
+div.dexList {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 24px;
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0px 0px 20px 2px rgba(0, 0, 0, 0.3);
+}
+div.dexList > div {
+  /* width: calc((100% / 9) - (128px / 9)); */
+  width: calc((100% / 7) - (96px / 7));
+}
+
+@media (max-width: 1080px) {
+  div.dexList > div {
+    width: calc((100% / 5) - (72px / 5));
+  }
+}
+@media (max-width: 720px) {
+  div.dexList > div {
+    width: calc((100% / 3) - (32px / 3));
+  }
+}

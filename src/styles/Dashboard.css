@@ -1,0 +1,52 @@
+div#dashboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 80px 0;
+}
+div#dashboard h2 {
+  margin-bottom: 16px;
+  img {
+    height: 82px;
+  }
+}
+div.myPokemon {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+}
+div.myPokemon > div {
+  max-width: 120px;
+  width: calc((100% / 6) - (40px / 6));
+  box-sizing: border-box;
+  background-color: #fff;
+}
+@media (max-width: 1080px) {
+  div.myPokemon > div {
+    width: calc((100% / 3) - (16px / 3));
+  }
+}
+
+div.myPokemon div.blankImg {
+  position: relative;
+  border: 2px solid #000;
+  border-radius: 14px;
+}
+
+div.myPokemon div.blankImg:before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 0;
+  padding: 50% 0;
+}
+div.myPokemon div.blankImg img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+}
