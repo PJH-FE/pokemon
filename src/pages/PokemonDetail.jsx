@@ -9,15 +9,13 @@ import leftArrow from "../assets/leftArrow.png";
 import rightArrow from "../assets/rightArrow.png";
 import pokeball from "../assets/pokeball.png";
 
-// Context API
-import { useContext } from "react";
-import { MyPokemonContext } from "../context/MyPokemonContext";
+// Redux
+import { useDispatch, useSelector } from "react-redux";
+import { addPokemon } from "../redux/modules/mypokemon";
 
 const PokemonDetail = () => {
-  const data = useContext(MyPokemonContext);
-  const addEvent = (pokemon) => {
-    data.addPokemon(pokemon);
-  };
+  const dispatch = useDispatch();
+  const myPokemon = useSelector((state) => state.myPokemon);
 
   // Query String 가져온 뒤, 같은 아이디의 포켓몬 출력
   const [searchParams, setSearchParams] = useSearchParams();
@@ -60,7 +58,7 @@ const PokemonDetail = () => {
 
           <AddBtn
             onClick={() => {
-              addEvent(pokemon);
+              dispatch(addPokemon(myPokemon, pokemon));
             }}
             style={{
               borderColor: TypeColor(pokemon.types[0]),

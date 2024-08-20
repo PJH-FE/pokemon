@@ -4,17 +4,12 @@ import { TypeColor } from "../setData/TypeColor";
 import { TypeIcon } from "../setData/TypeIcon";
 import pokeball from "../assets/pokeball.png";
 
-import { useContext } from "react";
-import { MyPokemonContext } from "../context/MyPokemonContext";
+import { useDispatch, useSelector } from "react-redux";
+import { addPokemon, delPokemon } from "../redux/modules/mypokemon";
 
 const PokemonCard = ({ pokemon, isSelected }) => {
-  const data = useContext(MyPokemonContext);
-  const addEvent = () => {
-    data.addPokemon(pokemon);
-  };
-  const removeEvent = () => {
-    data.removePokemon(pokemon);
-  };
+  const dispatch = useDispatch();
+  const myPokemon = useSelector((state) => state.myPokemon);
 
   const isLink = `/pokemon-detail?id=${pokemon.id}`;
 
@@ -38,7 +33,7 @@ const PokemonCard = ({ pokemon, isSelected }) => {
         <AddBtn
           onClick={(e) => {
             e.preventDefault();
-            addEvent();
+            dispatch(addPokemon(myPokemon, pokemon));
           }}
           className="addBtn"
         >
@@ -48,7 +43,7 @@ const PokemonCard = ({ pokemon, isSelected }) => {
         <RemoveBtn
           onClick={(e) => {
             e.preventDefault();
-            removeEvent();
+            dispatch(delPokemon(myPokemon, pokemon));
           }}
           className="removeBtn"
         >

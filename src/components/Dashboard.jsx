@@ -1,13 +1,11 @@
 import PokemonCard from "./PokemonCard";
-import { useContext } from "react";
-import { MyPokemonContext } from "../context/MyPokemonContext";
 import styled from "styled-components";
 import DashboardTitle from "../assets/mypokemon.png";
 import blankImg from "../assets/blankImg.png";
+import { useSelector } from "react-redux";
 
 const Dashboard = () => {
-  const data = useContext(MyPokemonContext);
-  const myPokemon = data.myPokemon;
+  const myPokemon = useSelector((state) => state.myPokemon);
 
   // 나만의 포켓몬 Default 이미지 출력
   const blankDiv = () => {

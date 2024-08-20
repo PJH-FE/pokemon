@@ -1,5 +1,5 @@
 import MOCK_DATA from "../mock";
-import PokemonCard from "./PokemonCard";
+import PokemonCard from "../components/PokemonCard";
 import styled from "styled-components";
 
 const PokemonList = () => {
