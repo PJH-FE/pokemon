@@ -11,7 +11,7 @@ import pokeball from "../assets/pokeball.png";
 
 // Redux
 import { useDispatch, useSelector } from "react-redux";
-import { addPokemon } from "../redux/modules/myPokemon";
+import { HandleAddPokemon } from "../redux/modules/myPokemon";
 
 const PokemonDetail = () => {
   const dispatch = useDispatch();
@@ -58,7 +58,7 @@ const PokemonDetail = () => {
 
           <AddBtn
             onClick={() => {
-              dispatch(addPokemon(myPokemon, pokemon));
+              dispatch(HandleAddPokemon(myPokemon, pokemon));
             }}
             style={{
               borderColor: TypeColor(pokemon.types[0]),
