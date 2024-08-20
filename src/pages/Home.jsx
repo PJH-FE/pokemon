@@ -6,7 +6,7 @@ const Home = () => {
   return (
     <HomeDiv>
       <img src={Logo} alt="로고" />
-      <Link to="/pokemon/dex">포켓몬 도감 시작하기</Link>
+      <Link to="/dex">포켓몬 도감 시작하기</Link>
     </HomeDiv>
   );
 };
