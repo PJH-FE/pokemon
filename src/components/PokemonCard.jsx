@@ -5,7 +5,7 @@ import { TypeIcon } from "../setData/TypeIcon";
 import pokeball from "../assets/pokeball.png";
 
 import { useDispatch, useSelector } from "react-redux";
-import { HandleAddPokemon, HandleDelPokemon } from "../redux/modules/mypokemon";
+import { HandleAddPokemon, HandleDelPokemon } from "../redux/modules/myPokemon";
 
 const PokemonCard = ({ pokemon, isSelected }) => {
   const dispatch = useDispatch();
