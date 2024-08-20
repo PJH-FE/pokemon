@@ -1,0 +1,24 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+* {
+  font-family: "Pretendard", serif !important;
+}
+body {
+  background: #fff7d7;
+  min-height: 100vh;
+  overflow-y: scroll !important;
+  padding-right: 0 !important;
+}
+.bg {
+  z-index: -1;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.3;
+}
+
+div#wrap {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 4%;
+}
