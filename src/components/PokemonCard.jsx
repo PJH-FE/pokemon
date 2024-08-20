@@ -5,7 +5,7 @@ import { TypeIcon } from "../setData/TypeIcon";
 import pokeball from "../assets/pokeball.png";
 
 import { useDispatch, useSelector } from "react-redux";
-import { addPokemon, delPokemon } from "../redux/modules/mypokemon";
+import { HandleAddPokemon, HandleDelPokemon } from "../redux/modules/mypokemon";
 
 const PokemonCard = ({ pokemon, isSelected }) => {
   const dispatch = useDispatch();
@@ -33,7 +33,7 @@ const PokemonCard = ({ pokemon, isSelected }) => {
         <AddBtn
           onClick={(e) => {
             e.preventDefault();
-            dispatch(addPokemon(myPokemon, pokemon));
+            dispatch(HandleAddPokemon(myPokemon, pokemon));
           }}
           className="addBtn"
         >
@@ -43,7 +43,7 @@ const PokemonCard = ({ pokemon, isSelected }) => {
         <RemoveBtn
           onClick={(e) => {
             e.preventDefault();
-            dispatch(delPokemon(myPokemon, pokemon));
+            dispatch(HandleDelPokemon(myPokemon, pokemon));
           }}
           className="removeBtn"
         >

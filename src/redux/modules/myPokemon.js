@@ -1,7 +1,7 @@
-// alert 커스텀
 import Swal from "sweetalert2";
 import { toast } from "react-toastify";
 import alertImg from "../../assets/alertImg.png";
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState =
   localStorage.getItem("myPokemon") !== null
@@ -13,27 +13,36 @@ const saveData = (myPokemon) => {
   localStorage.setItem("myPokemon", JSON.stringify(myPokemon));
 };
 
-const ADD_POKEMON = "ADD_POKEMON";
-export const addPokemon = (myPokemon, pokemon) => {
+const myPokemonSlice = createSlice({
+  name: "myPokemon",
+  initialState,
+  reducers: {
+    addPokemon: (state, action) => {
+      return action.payload.NewPokemonList;
+    },
+
+    delPokemon: (state, action) => {
+      return action.payload.NewPokemonList;
+    },
+  },
+});
+
+export const HandleAddPokemon = (myPokemon, pokemon) => {
   return async (dispatch) => {
     if (myPokemon.length === 6) {
       toast.error("포켓몬은 최대 6마리까지 등록 가능합니다.");
     } else if (!!myPokemon.find((item) => item.id === pokemon.id)) {
       toast.error("이미 선택된 포켓몬입니다.");
     } else {
-      saveData([...myPokemon, pokemon]);
+      const NewPokemonList = [...myPokemon, pokemon];
+      saveData(NewPokemonList);
       toast.success(`${pokemon.korean_name} 포획에 성공하였습니다.`);
-
-      dispatch({
-        type: ADD_POKEMON,
-        pokemon: [...myPokemon, pokemon],
-      });
+      return dispatch(addPokemon({ NewPokemonList }));
     }
   };
 };
 
-const DEL_POKEMON = "DEL_POKEMON";
-export const delPokemon = (myPokemon, pokemon) => {
+export const HandleDelPokemon = (myPokemon, pokemon) => {
   return async (dispatch) => {
     const result = await Swal.fire({
       title: `${pokemon.korean_name}을(를) 놓아주시겠습니까?`,
@@ -51,30 +60,13 @@ export const delPokemon = (myPokemon, pokemon) => {
         imageHeight: 300,
       });
 
-      const removedMyPokemonList = myPokemon.filter(
-        (item) => item.id !== pokemon.id
-      );
-      saveData(removedMyPokemonList);
+      const NewPokemonList = myPokemon.filter((item) => item.id !== pokemon.id);
 
-      dispatch({
-        type: DEL_POKEMON,
-        pokemon: removedMyPokemonList,
-      });
+      saveData(NewPokemonList);
+      dispatch(delPokemon({ NewPokemonList }));
     }
   };
 };
 
-const myPokemon = (state = initialState, action) => {
-  switch (action.type) {
-    case "ADD_POKEMON":
-      return (state = action.pokemon);
-
-    case "DEL_POKEMON":
-      return (state = action.pokemon);
-
-    default:
-      return state;
-  }
-};
-
-export default myPokemon;
+export const { addPokemon, delPokemon } = myPokemonSlice.actions;
+export default myPokemonSlice.reducer;
