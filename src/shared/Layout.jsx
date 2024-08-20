@@ -1,9 +1,9 @@
 import { useLocation } from "react-router-dom";
 import Dashboard from "../components/Dashboard";
+import styled from "styled-components";
 import BgImg from "../assets/background.png";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import styled from "styled-components";
 
 const Footer = styled.div`
   width: 100%;
@@ -12,7 +12,7 @@ const Footer = styled.div`
   font-size: 12px;
 `;
 
-const Layout = ({ children, myPokemon, removePokemon }) => {
+const Layout = ({ children }) => {
   const location = useLocation();
 
   return (
@@ -21,9 +21,7 @@ const Layout = ({ children, myPokemon, removePokemon }) => {
         <img src={BgImg} alt="배경" className="bg" />
         <ToastContainer />
 
-        {location.pathname !== "/" && (
-          <Dashboard myPokemon={myPokemon} removePokemon={removePokemon} />
-        )}
+        {location.pathname !== "/" && <Dashboard />}
 
         {children}
       </div>

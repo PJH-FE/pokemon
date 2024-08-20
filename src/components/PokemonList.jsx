@@ -1,21 +1,41 @@
 import MOCK_DATA from "../mock";
 import PokemonCard from "./PokemonCard";
-import "../styles/Dex.css";
+import styled from "styled-components";
 
-const PokemonList = ({ addPokemon }) => {
+const PokemonList = () => {
   return (
-    <div className="dexList">
+    <PokemonDex>
       {MOCK_DATA.map((pokemon) => {
         return (
-          <PokemonCard
-            key={pokemon.id}
-            pokemon={pokemon}
-            clickEvent={addPokemon}
-            isSelected={false}
-          />
+          <PokemonCard key={pokemon.id} pokemon={pokemon} isSelected={false} />
         );
       })}
-    </div>
+    </PokemonDex>
   );
 };
 export default PokemonList;
+
+const PokemonDex = styled.div`
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 24px;
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0px 0px 20px 2px rgba(0, 0, 0, 0.3);
+
+  > div {
+    width: calc((100% / 7) - (96px / 7));
+
+    @media (max-width: 1080px) {
+      & {
+        width: calc((100% / 5) - (72px / 5));
+      }
+    }
+    @media (max-width: 720px) {
+      & {
+        width: calc((100% / 3) - (32px / 3));
+      }
+    }
+  }
+`;

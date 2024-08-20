@@ -3,8 +3,64 @@ import styled from "styled-components";
 import { TypeColor } from "../setData/TypeColor";
 import { TypeIcon } from "../setData/TypeIcon";
 import pokeball from "../assets/pokeball.png";
-import "../styles/Card.css";
 
+import { useContext } from "react";
+import { MyPokemonContext } from "../context/MyPokemonContext";
+
+const PokemonCard = ({ pokemon, isSelected }) => {
+  const data = useContext(MyPokemonContext);
+  const addEvent = () => {
+    data.addPokemon(pokemon);
+  };
+  const removeEvent = () => {
+    data.removePokemon(pokemon);
+  };
+
+  const isLink = `/pokemon-detail?id=${pokemon.id}`;
+
+  return (
+    <Card color={TypeColor(pokemon.types[0])}>
+      <Link to={isLink} className="pokemonCard">
+        <PokemonTypes>
+          {pokemon.types.map((type) => {
+            return (
+              <img src={TypeIcon(type)} alt={type} key={pokemon.id + type} />
+            );
+          })}
+        </PokemonTypes>
+
+        <img className="pokemon" src={pokemon.img_url} alt={pokemon.img_url} />
+        <PokemonNo>#{String(pokemon.id).padStart(3, "0")}</PokemonNo>
+        <PokemonName>{pokemon.korean_name}</PokemonName>
+      </Link>
+
+      {isSelected === false ? (
+        <AddBtn
+          onClick={(e) => {
+            e.preventDefault();
+            addEvent();
+          }}
+          className="addBtn"
+        >
+          <img src={pokeball} alt="추가" />
+        </AddBtn>
+      ) : (
+        <RemoveBtn
+          onClick={(e) => {
+            e.preventDefault();
+            removeEvent();
+          }}
+          className="removeBtn"
+        >
+          놓아주기
+        </RemoveBtn>
+      )}
+    </Card>
+  );
+};
+export default PokemonCard;
+
+// 포켓몬별 카드 레이아웃
 const Card = styled.div`
   position: relative;
   border-radius: 8px;
@@ -12,6 +68,8 @@ const Card = styled.div`
   box-sizing: border-box;
   overflow: hidden;
   text-align: center;
+
+  // 배경 색상
   &::before {
     content: "";
     display: block;
@@ -24,24 +82,28 @@ const Card = styled.div`
     opacity: 0.3;
   }
 
-  a {
+  // 포켓몬 정보
+  a.pokemonCard {
+    z-index: 2;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 16px;
+    text-decoration: none;
     color: #000;
+
+    // 포켓몬 이미지
+    .pokemon {
+      transition: 0.3s;
+    }
+    &:hover .pokemon {
+      transform: scale(1.2);
+    }
   }
-  span.no {
-    font-size: 12px;
-  }
-  div.name {
-    margin-top: 6px;
-    font-size: 16px;
-    font-weight: 700;
-    color: #1a1a1a;
-  }
-  .pokemon {
-    transition: 0.3s;
-  }
-  &:hover .pokemon {
-    transform: scale(1.2);
-  }
+
+  // 놓아주기 & 추가 버튼
   button {
     position: relative;
     z-index: 2;
@@ -51,37 +113,79 @@ const Card = styled.div`
   }
 `;
 
-const PokemonCard = ({ pokemon, clickEvent, isSelected }) => {
-  const isLink = `/pokemon-detail?id=${pokemon.id}`;
-  const buttonEvent = (e) => {
-    e.preventDefault();
-    clickEvent(pokemon);
-  };
+// 포켓몬 타입
+const PokemonTypes = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0px;
+  display: flex;
+  gap: 0;
+  height: 18px;
+  border-radius: 0 0 0 3px;
+  overflow: hidden;
 
-  return (
-    <Card color={TypeColor(pokemon.types[0])}>
-      <Link to={isLink} className="pokemonCard">
-        <div className="type">
-          {pokemon.types.map((type) => {
-            return <img src={TypeIcon(type)} alt={type} key={type} />;
-          })}
-        </div>
+  img {
+    height: 100%;
+    width: auto;
+  }
+`;
 
-        <img className="pokemon" src={pokemon.img_url} alt={pokemon.img_url} />
-        <span className="no">#{String(pokemon.id).padStart(3, "0")}</span>
-        <div className="name">{pokemon.korean_name}</div>
-      </Link>
+// 포켓몬 번호
+const PokemonNo = styled.span`
+  font-size: 12px;
+`;
 
-      {isSelected === false ? (
-        <button onClick={buttonEvent} className="addBtn">
-          <img src={pokeball} alt="추가" />
-        </button>
-      ) : (
-        <button onClick={buttonEvent} className="removeBtn">
-          놓아주기
-        </button>
-      )}
-    </Card>
-  );
-};
-export default PokemonCard;
+// 포켓몬 이름
+const PokemonName = styled.div`
+  margin-top: 6px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a1a1a;
+`;
+
+// 추가 버튼
+const AddBtn = styled.button`
+  background: none;
+  border: 0;
+  outline: none !important;
+  cursor: pointer;
+
+  img {
+    width: 24px;
+  }
+  &:hover img {
+    animation: pokeball 1.5s infinite;
+  }
+
+  // 추가 버튼 애니메이션
+  @keyframes pokeball {
+    0% {
+      transform: rotate(0deg);
+    }
+    15% {
+      transform: rotate(-22deg);
+    }
+    45% {
+      transform: rotate(22deg);
+    }
+    60% {
+      transform: rotate(0deg);
+    }
+  }
+`;
+
+// 삭제버튼
+const RemoveBtn = styled.button`
+  color: #fff;
+  font-weight: 700;
+  background-color: #9a9a9a;
+  border-radius: 4px;
+  border: 0;
+  padding: 4px 0;
+  margin: 8px 0 10px !important;
+  transition: 0.3s;
+
+  &:hover {
+    background-color: #ef4036;
+  }
+`;
