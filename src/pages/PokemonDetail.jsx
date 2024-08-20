@@ -11,7 +11,7 @@ import pokeball from "../assets/pokeball.png";
 
 // Redux
 import { useDispatch, useSelector } from "react-redux";
-import { HandleAddPokemon } from "../redux/modules/mypokemon";
+import { HandleAddPokemon } from "../redux/modules/myPokemon";
 
 const PokemonDetail = () => {
   const dispatch = useDispatch();
