@@ -24,7 +24,7 @@ const Layout = ({ children }) => {
       <div id="wrap">
         <img src={BgImg} alt="배경" className="bg" />
         <ToastContainer />
-        {pathname !== "/" && <Dashboard />}
+        {location.pathname !== "/" && <Dashboard />}
 
         {children}
       </div>
