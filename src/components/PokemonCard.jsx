@@ -11,7 +11,7 @@ const PokemonCard = ({ pokemon, isSelected }) => {
   const dispatch = useDispatch();
   const myPokemon = useSelector((state) => state.myPokemon);
 
-  const isLink = `/pokemon-detail?id=${pokemon.id}`;
+  const isLink = `/pokemon/pokemon-detail?id=${pokemon.id}`;
 
   return (
     <Card color={TypeColor(pokemon.types[0])}>

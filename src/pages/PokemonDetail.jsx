@@ -11,7 +11,7 @@ import pokeball from "../assets/pokeball.png";
 
 // Redux
 import { useDispatch, useSelector } from "react-redux";
-import { addPokemon } from "../redux/modules/mypokemon";
+import { HandleAddPokemon } from "../redux/modules/mypokemon";
 
 const PokemonDetail = () => {
   const dispatch = useDispatch();
@@ -25,14 +25,14 @@ const PokemonDetail = () => {
   // 다음 버튼 클릭시 다음 아이디 번호값의 포켓몬 출력
   const nextLink =
     nowPokemonId === MOCK_DATA.length
-      ? `/pokemon-detail?id=1`
-      : `/pokemon-detail?id=${nowPokemonId + 1}`;
+      ? `/pokemon/pokemon-detail?id=1`
+      : `/pokemon/pokemon-detail?id=${nowPokemonId + 1}`;
 
   // 이전 버튼 클릭시 이전 아이디 번호값의 포켓몬 출력
   const prevLink =
     nowPokemonId === 1
-      ? `/pokemon-detail?id=${MOCK_DATA.length}`
-      : `/pokemon-detail?id=${nowPokemonId - 1}`;
+      ? `/pokemon/pokemon-detail?id=${MOCK_DATA.length}`
+      : `/pokemon/pokemon-detail?id=${nowPokemonId - 1}`;
 
   return (
     <DetailArea>
@@ -58,7 +58,7 @@ const PokemonDetail = () => {
 
           <AddBtn
             onClick={() => {
-              dispatch(addPokemon(myPokemon, pokemon));
+              dispatch(HandleAddPokemon(myPokemon, pokemon));
             }}
             style={{
               borderColor: TypeColor(pokemon.types[0]),
@@ -78,7 +78,7 @@ const PokemonDetail = () => {
         next
       </Link>
 
-      <Link to="/dex" className="goList">
+      <Link to="/pokemon/dex" className="goList">
         목록으로 돌아가기
       </Link>
     </DetailArea>

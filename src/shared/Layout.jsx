@@ -14,14 +14,17 @@ const Footer = styled.div`
 
 const Layout = ({ children }) => {
   const location = useLocation();
+  let pathname =
+    location.pathname.replace("/pokemon", "").length === 0
+      ? "/"
+      : location.pathname.replace("/pokemon", "");
 
   return (
     <>
       <div id="wrap">
         <img src={BgImg} alt="배경" className="bg" />
         <ToastContainer />
-
-        {location.pathname !== "/" && <Dashboard />}
+        {pathname !== "/" && <Dashboard />}
 
         {children}
       </div>
