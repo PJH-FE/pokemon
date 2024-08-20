@@ -7,7 +7,7 @@ import Dex from "../pages/Dex";
 
 const Router = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.VITE_PUBLIC_URL}>
       <Layout>
         <Routes>
           <Route path="/pokemon" element={<Home />} />
