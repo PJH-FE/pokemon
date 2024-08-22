@@ -1,13 +1,17 @@
 ![](https://capsule-render.vercel.app/api?type=waving&height=300&color=0:F8B195,50:F67280,100:F67280&text=Pokemon%20Dex&desc=내일배움캠프%20개인과제&descAlignY=53&fontAlignY=35&fontColor=ffffff&fontAlign=50)
+<br/>
+<br/>
 
 # Pokemon Dex
 
 포켓몬들의 정보를 확인하고 나만의 팀을 꾸려보세요!
 <br/>
+<br/>
 
 ## 🌟 배포 링크
 
 [Pokemon Dex](https://pokemon-pjh.vercel.app/)
+<br/>
 <br/>
 
 ## 📚 프로젝트 구조
@@ -45,7 +49,7 @@
  ┣ 📜index.html
 ```
 
- <br/>
+<br/>
 
 ## ⚒️ 개발 환경
 
@@ -53,12 +57,14 @@
 ![](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 ![](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+
 <br/>
 <br/>
 
 # 📆프로젝트 기간
 
 24.08.16 ~ 24.08.27
+
 <br/>
 <br/>
 
@@ -92,6 +98,7 @@ confirm창에서 **확인** 버튼을 클릭하시면 비로소 나만의 포켓
 **추가 / 삭제** 또한 상세페이지에서 가능합니다.
 
 마지막으로 **[목록으로 돌아가기]** 버튼을 클릭하시면 다시 목록 페이지로 이동됩니다.
+
 <br/>
 <br/>
 
@@ -104,6 +111,7 @@ confirm창에서 **확인** 버튼을 클릭하시면 비로소 나만의 포켓
 [개인프로젝트-포켓몬 도감(3)](https://velog.io/@sjrmd781/%EA%B0%9C%EC%9D%B8%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%ED%8F%AC%EC%BC%93%EB%AA%AC-%EB%8F%84%EA%B0%903)
 
 [개인프로젝트-포켓몬 도감(4)](https://velog.io/@sjrmd781/%EA%B0%9C%EC%9D%B8%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%ED%8F%AC%EC%BC%93%EB%AA%AC-%EB%8F%84%EA%B0%904)
+
 <br/>
 <br/>
 
