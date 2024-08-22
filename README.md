@@ -72,16 +72,17 @@
 
 ## 1️⃣ 나만의 포켓몬 추가
 
-![add](https://github.com/user-attachments/assets/81bdbb7a-173a-4db1-a68f-ac383d529a24)
+![add-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/47df17aa-1529-4048-9928-5b6ccdc326fb)
 
-목록에서 **포켓볼**을 클릭하게되면, 해당 포켓몬이 상단의 **나만의 포켓몬**
-영역에 등록되게 됩니다.
+목록에서 **포켓볼**을 클릭하게되면, 해당 포켓몬이 상단의 **나만의 포켓몬** 영역에 등록되게 됩니다.
+
+최대 6마리까지 등록 가능하며, 동일 포켓몬 등록 or 6마리 초과 등록시 error 메시지가 출력됩니다.
 
 <br/>
 
 ## 2️⃣ 나만의 포켓몬 삭제
 
-![del](https://github.com/user-attachments/assets/3210e6cb-efbb-47dd-bce9-ea890b8ca451)
+![del-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/11e65e22-d983-4328-9356-d87053692c4e)
 
 **놓아주기** 버튼을 클릭하시게 되면, **confirm** 창이 노출이 됩니다.
 confirm창에서 **확인** 버튼을 클릭하시면 비로소 나만의 포켓몬 영역에서 해당 포켓몬이 **삭제**됩니다.
@@ -90,7 +91,7 @@ confirm창에서 **확인** 버튼을 클릭하시면 비로소 나만의 포켓
 
 ## 3️⃣ 상세페이지 이동
 
-![detail](https://github.com/user-attachments/assets/a375e4a7-b3b7-4f0e-a830-cc074378f511)
+![detail-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/d3a43e49-cc82-429c-b61e-8c9e5a2f530b)
 
 목록에서 포켓몬의 이미지를 클릭하시면 해당 포켓몬의 상세페이지로 이동됩니다.<br/>
 
