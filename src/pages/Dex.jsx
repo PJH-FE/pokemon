@@ -7,7 +7,7 @@ const PokemonList = () => {
     <PokemonDex>
       {MOCK_DATA.map((pokemon) => {
         return (
-          <PokemonCard key={pokemon.id} pokemon={pokemon} isSelected={false} />
+          <PokemonCard key={pokemon.id} pokemon={pokemon} btnType="listAdd" />
         );
       })}
     </PokemonDex>

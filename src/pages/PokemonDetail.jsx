@@ -7,16 +7,10 @@ import { TypeIcon } from "../setData/TypeIcon";
 import { TypeColor } from "../setData/TypeColor";
 import leftArrow from "../assets/leftArrow.png";
 import rightArrow from "../assets/rightArrow.png";
-import pokeball from "../assets/pokeball.png";
 
-// Redux
-import { useDispatch, useSelector } from "react-redux";
-import { HandleAddPokemon } from "../redux/modules/myPokemon";
+import Button from "../components/Button";
 
 const PokemonDetail = () => {
-  const dispatch = useDispatch();
-  const myPokemon = useSelector((state) => state.myPokemon);
-
   // Query String 가져온 뒤, 같은 아이디의 포켓몬 출력
   const [searchParams, setSearchParams] = useSearchParams();
   const nowPokemonId = Number(searchParams.get("id"));
@@ -56,18 +50,7 @@ const PokemonDetail = () => {
 
           <div className="description">{pokemon.description}</div>
 
-          <AddBtn
-            onClick={() => {
-              dispatch(HandleAddPokemon(myPokemon, pokemon));
-            }}
-            style={{
-              borderColor: TypeColor(pokemon.types[0]),
-              color: TypeColor(pokemon.types[0]),
-            }}
-          >
-            <img src={pokeball} alt="몬스터볼" />
-            포획하기
-          </AddBtn>
+          <Button pokemon={pokemon} btnType="detailAdd" />
         </PokemonInfo>
       </Box>
 
@@ -180,28 +163,6 @@ const PokemonType = styled.div`
     align-items: center;
     gap: 4px;
   }
-  img {
-    width: 24px;
-  }
-`;
-
-// 추가 버튼
-const AddBtn = styled.div`
-  all: unset;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  background: transparent;
-  border-style: solid;
-  border-width: 2px;
-  border-radius: 4px;
-  outline: none !important;
-  padding: 2px 0;
-  font-weight: 700;
-  cursor: pointer;
-  margin-top: 8px;
-
   img {
     width: 24px;
   }

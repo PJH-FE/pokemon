@@ -31,7 +31,7 @@ const Dashboard = () => {
             <PokemonCard
               key={pokemon.korean_name}
               pokemon={pokemon}
-              isSelected={true}
+              btnType="listDel"
             />
           );
         })}
