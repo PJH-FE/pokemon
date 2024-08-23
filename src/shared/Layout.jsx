@@ -5,6 +5,12 @@ import BgImg from "../assets/background.png";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+// Context API에 분리
+import MOCK_DATA from "../mock";
+import { TypeIcon } from "../setData/TypeIcon";
+import { TypeColor } from "../setData/TypeColor";
+import { CommonContext } from "../context/CommonContext";
+
 const Footer = styled.div`
   width: 100%;
   padding: 32px 0;
@@ -17,16 +23,18 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <div id="wrap">
-        <img src={BgImg} alt="배경" className="bg" />
-        <ToastContainer />
+      <CommonContext.Provider value={{ MOCK_DATA, TypeIcon, TypeColor }}>
+        <div id="wrap">
+          <img src={BgImg} alt="배경" className="bg" />
+          <ToastContainer />
 
-        {location.pathname !== "/" && <Dashboard />}
+          {location.pathname !== "/" && <Dashboard />}
 
-        {children}
-      </div>
+          {children}
+        </div>
 
-      <Footer id="footer">Designed by PJH / Icons by ICONS 8</Footer>
+        <Footer id="footer">Designed by PJH / Icons by ICONS 8</Footer>
+      </CommonContext.Provider>
     </>
   );
 };

@@ -1,16 +1,19 @@
 import { Link, useSearchParams } from "react-router-dom";
-import MOCK_DATA from "../mock";
+
+import { useContext } from "react";
+import { CommonContext } from "../context/CommonContext";
+import Button from "../components/Button";
 
 // 스타일 관련
 import styled from "styled-components";
-import { TypeIcon } from "../setData/TypeIcon";
-import { TypeColor } from "../setData/TypeColor";
 import leftArrow from "../assets/leftArrow.png";
 import rightArrow from "../assets/rightArrow.png";
 
-import Button from "../components/Button";
-
 const PokemonDetail = () => {
+  const MOCK_DATA = useContext(CommonContext).MOCK_DATA;
+  const TypeColor = useContext(CommonContext).TypeColor;
+  const TypeIcon = useContext(CommonContext).TypeIcon;
+
   // Query String 가져온 뒤, 같은 아이디의 포켓몬 출력
   const [searchParams, setSearchParams] = useSearchParams();
   const nowPokemonId = Number(searchParams.get("id"));

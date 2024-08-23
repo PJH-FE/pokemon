@@ -1,10 +1,14 @@
 import { useDispatch, useSelector } from "react-redux";
 import { HandleAddPokemon, HandleDelPokemon } from "../redux/modules/myPokemon";
 import styled from "styled-components";
-import { TypeColor } from "../setData/TypeColor";
 import pokeball from "../assets/pokeball.png";
 
+import { useContext } from "react";
+import { CommonContext } from "../context/CommonContext";
+
 const Button = ({ pokemon, btnType }) => {
+  const TypeColor = useContext(CommonContext).TypeColor;
+
   const dispatch = useDispatch();
   const myPokemon = useSelector((state) => state.myPokemon);
 

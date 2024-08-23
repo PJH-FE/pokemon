@@ -1,21 +1,25 @@
-import MOCK_DATA from "../mock";
+import { useContext } from "react";
+import { CommonContext } from "../context/CommonContext";
+
 import PokemonCard from "../components/PokemonCard";
 import styled from "styled-components";
 
-const PokemonList = () => {
+const Dex = () => {
+  const MOCK_DATA = useContext(CommonContext).MOCK_DATA;
+
   return (
-    <PokemonDex>
+    <PokemonList>
       {MOCK_DATA.map((pokemon) => {
         return (
           <PokemonCard key={pokemon.id} pokemon={pokemon} btnType="listAdd" />
         );
       })}
-    </PokemonDex>
+    </PokemonList>
   );
 };
-export default PokemonList;
+export default Dex;
 
-const PokemonDex = styled.div`
+const PokemonList = styled.div`
   display: flex;
   gap: 16px;
   flex-wrap: wrap;

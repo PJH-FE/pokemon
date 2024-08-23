@@ -1,11 +1,14 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { TypeColor } from "../setData/TypeColor";
-import { TypeIcon } from "../setData/TypeIcon";
+
 import Button from "./Button";
+import { useContext } from "react";
+import { CommonContext } from "../context/CommonContext";
 
 const PokemonCard = ({ pokemon, btnType }) => {
   const isLink = `/pokemon-detail?id=${pokemon.id}`;
+  const TypeColor = useContext(CommonContext).TypeColor;
+  const TypeIcon = useContext(CommonContext).TypeIcon;
 
   return (
     <Card color={TypeColor(pokemon.types[0])}>
